@@ -1,13 +1,24 @@
 language: node_js
 node_js: stable
 # S: Build Lifecycle
-install:
-  - npm install
-#before_script:
+# install:
+#   - npm install
+  install:
+- npm install hexo-cli -g
+# - npm install hexo-deployer-git --save
+- npm install hexo-algolia -g
+- npm install
+
+script:
+- hexo clean
+- hexo g
+- hexo g
+
  # - npm install -g gulp
 script:
   - hexo g
-  # - hexo algolia
+  - hexo algolia
+
 after_script:
   - cd ./public
   - git init
