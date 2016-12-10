@@ -4,10 +4,10 @@ node_js: stable
 install:
  - npm install hexo -g
  - npm install hexo-cli -g
- - npm install hexo-deployer-git -g
  - npm install
 script:
   - hexo clean
+  - hexo g
   - hexo g
   - hexo algolia
 after_script:
