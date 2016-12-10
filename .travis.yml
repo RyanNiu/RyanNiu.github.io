@@ -1,6 +1,10 @@
 language: node_js
 node_js: stable
 # S: Build Lifecycle
+before_install:
+ - npm install hexo -g
+ - npm install hexo-cli -g
+ - npm install hexo-algolia -g
 install:
  # - npm install hexo -g
  # - npm install hexo-cli -g
@@ -8,7 +12,6 @@ install:
  - npm install
 script:
   - hexo clean
-  - hexo g
   - hexo g
   - hexo algolia
 after_script:
