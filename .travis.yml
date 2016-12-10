@@ -12,12 +12,8 @@ node_js: stable
 script:
 - hexo clean
 - hexo g
-- hexo g
-
+- hexo algolia
  # - npm install -g gulp
-script:
-  - hexo g
-  - hexo algolia
 
 after_script:
   - cd ./public
