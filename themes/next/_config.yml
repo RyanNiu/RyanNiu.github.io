@@ -37,6 +37,7 @@ menu:
   #about: /about
   archives: /archives
   tags: /tags
+  timer: timer/timer.html
   #schedule: /schedule
   #commonweal: /404.html
 
