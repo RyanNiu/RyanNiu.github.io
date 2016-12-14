@@ -1,13 +1,16 @@
 ---
-title: Hexo手把手教你使用Travis CI自动部署你的Hexo博客到Github上
+title: Hexo+Github+Travis CI 实现blog自动部署
 date: 2016-12-10 02:30:00
 tag: Better me
 ---
 
 >文章引自[任苹蜻的博客](http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/) 
 
-### **一、 新建新的分支**
+<!-- more -->
+
 ---
+
+### **新建新的分支**
 
 `master：`博客的静态文件，也就是hexo生成后的HTML文件，因为要使用Gitpage服务，所以他规定的网页文件必须是在master分支
 <!--more-->
@@ -23,9 +26,9 @@ Git怎么推送本地分支到远程新分支上面去？
 
 类似，`git push origin :remote_branch，local_branch`留空的话则是删除远程`remote_branch`分支。
 
+---
 
 **这里是分支常用命令：**
----
 
 
 - 列出所有本地分支
@@ -73,9 +76,9 @@ $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
 
-
-### **二、配置Travis**
 ---
+
+### **配置Travis**
 
 - 接入Travis CI
  - 打开Travis CI网站，使用github账号登录。
@@ -149,8 +152,9 @@ env:
 
 到这一步我们配置已经完成了
 
-### **三、本地操作**
 ---
+
+### **本地操作**
 
 - 把远程仓库源码下载下来新建新的分支dev  `git clone  -b dev https://github.com/poetries/poetries.github.io.git `
 - 切换到项目根目录下
