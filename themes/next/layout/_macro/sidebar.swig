@@ -58,6 +58,12 @@
           {% endif %}
 
         </nav>
+         <!-- timer start -->
+
+         <!-- styl with sidebar-timer.styl -->
+         <!-- javascript with sidebar-timer.js -->
+          <div class = "sidebar_timer"></div>               
+        <!-- timer end -->
 
         {% if theme.rss %}
           <div class="feed-link motion-element">
