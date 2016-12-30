@@ -27,8 +27,12 @@
     </header>
 
     <main id="main" class="main">
+      {#动画背景#}
+      <canvas id="background-canvas"></canvas>
+
+      <div class="content-wrap">
       <div class="main-inner">
-        <div class="content-wrap">
+
           <div id="content" class="content">
             {% block content %}{% endblock %}
           </div>
@@ -66,13 +70,16 @@
 
   {% include '_scripts/third-party/comments.swig' %}
   {% include '_scripts/third-party/tinysou.swig' %}
- 
-  <!-- {% include '_scripts/third-party/localsearch.swig' %} -->
+
+  {#{% include '_scripts/third-party/localsearch.swig' %}#}
   {% include '_scripts/third-party/mathjax.swig' %}
   {% include '_scripts/third-party/lean-analytics.swig' %}
   {% include '_scripts/baidu-push.swig' %}
   {% include '_scripts/third-party/schedule.swig' %}
-   <!-- algolia 配置开始 -->
+  <!-- mist background -->
+  {% include '_scripts/third-party/animate-background.swig' %}
+
+  <!-- algolia 配置开始 -->
   {% if theme.algolia %}
     {% include '_scripts/third-party/algolia.swig' %}
   {% endif %}
