@@ -2,6 +2,7 @@
 title: 时光页面，以及侧边栏展示功能实现
 tags:
   - Better me
+  - love note
 categories: []
 date: 2016-12-17 01:10:00
 ---
@@ -18,7 +19,7 @@ date: 2016-12-17 01:10:00
 >经过了两个夜晚，实现了时光页面的初步创建和侧边栏展示，下面简单讲解一下实现方法
 
 #### JS计时器的实现
->源码取自CODEPEN，[Sergei Varzin](http://codepen.io/varzin)的[源码](http://codepen.io/varzin/pen/rFfhH)
+>源码取自CODEPEN，[Sergei Varzin](http://codepen.io/varzin)的[Date Countdown](http://codepen.io/varzin/pen/rFfhH)
 
 下面是我调整后的JS代码：
 
@@ -57,7 +58,7 @@ setInterval('updateTimer()', 1000 );
 功能实现后，在配置文件中，增加Menu既可，注意I18N的应用
 
 #### 侧边栏展示
-- 新建.styl文件 next/source/css/_common/components/sidebar/sidebar-timer.styl
+- 新建.styl文件 `next/source/css/_common/components/sidebar/sidebar-timer.styl`
 
 ``` css
 .sidebar_timer {
@@ -89,13 +90,13 @@ setInterval('updateTimer()', 1000 );
 }
 ```
 
-- 添加styl引用 next/source/css/_common/components/sidebar/sidebar.styl
+- 添加styl引用 `next/source/css/_common/components/sidebar/sidebar.styl`
 
 ``` css
 @import "sidebar-timer";
 ```
 
-- 新建js文件 next/source/js/src／sidebar-timer.js
+- 新建js文件 `next/source/js/src/sidebar-timer.js`
 
 ``` javascript
 function updateSidebarTimer() {
@@ -130,7 +131,7 @@ function updateSidebarTimer() {
 setInterval('updateSidebarTimer()', 1000 );
 ```
 
-- 添加js引用 next/layout/_scripts/commons.swig
+- 添加js引用 `next/layout/_scripts/commons.swig`
 
 ``` js
   set js_commons = [
@@ -139,7 +140,7 @@ setInterval('updateSidebarTimer()', 1000 );
     'src/sidebar-timer.js'//添加计时器js的引用
   ]
 ```
-- 添加HTML节点 next/layout/_macro/sidebar.swig
+- 添加HTML节点 `next/layout/_macro/sidebar.swig`
 
 > 在`site-state`和`feed-link`中间添加代码
 

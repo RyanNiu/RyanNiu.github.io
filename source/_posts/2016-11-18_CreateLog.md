@@ -64,6 +64,8 @@ date: 2016-11-18 17:08:24
 > 感谢[Travis CI](https://travis-ci.org/) 提供的开源服务
 > 感谢[任苹蜻的博客](http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/)
 > 感谢[Adol1111](https://github.com/Adol1111) 对gitingnor的讲解
+- 添加时光页面和侧边栏展示 12/17
+- 添加动画背景 12/29
 
 #### 后续计划
 - ~~添加列表折叠优化~~，妄想写个hexo插件 11/22 功能实现 后续研究怎么开发插件
