@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>GAME</title>
+  <style>
+body {
+  background-color: #f5ee31;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="title"><h1>点击眼睛进入游戏</h1></div>
+  <div class="face">
+    <div class="crater"></div>
+    <div class="crater"></div>
+    <div class="crater"></div>
+    <div class="crater"></div>
+    <div class="crater"></div>
+  </div>
+
+  <div class="eye">
+    <div class="pupil"  onclick="window.self.location.href='./web-mobile/index.html'"></div>
+  </div>
+  <div class="eye">
+    <div class="pupil" onclick="window.self.location.href='./web-desktop/index.html'"></div>
+  </div>
+
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>

@@ -27,7 +27,18 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: game/**
+# 1.单个文件夹下全部文件：skip_render: demo/*
+
+# 2.单个文件夹下指定类型文件：skip_render: demo/*.html
+
+# 3.单个文件夹下全部文件以及子目录:skip_render: demo/**
+
+# 4.多个文件夹以及各种复杂情况：
+
+# skip_render:
+#     - 'demo/*.html'
+#     - 'demo/**'
 
 # Writing
 new_post_name: :title.md # File name of new posts
