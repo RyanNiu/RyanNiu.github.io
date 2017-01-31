@@ -29,6 +29,6 @@
     "hexo-server": "^0.2.0",
     "hexo-sliding-spoiler": "^1.1.6",
     "hexo-tag-demo": "^0.2.10",
-+   "hexo-tag-randpaging":"^0.0.1"
+    "hexo-tag-randpaging":"^0.0.1"
   }
 }
