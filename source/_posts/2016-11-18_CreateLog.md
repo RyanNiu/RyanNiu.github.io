@@ -20,7 +20,7 @@ date: 2016-11-18 17:08:24
 >在wordpress 和hexo 中，纠结了好久，最终由于hexo相对简单并且据说编译速度更快，继而投入了hexo的怀抱。
 
 ##### 网站主题: [next](http://theme-next.iissnan.com/)
->建站前期，搜索了很个人博客案例，被next一击即中，简洁大气很对我的胃口，也是使用hexo的原因之一。
+>建站前期，搜索了很多个人博客案例，被next一击即中，简洁大气很对我的胃口，也是使用hexo的原因之一。
 <!--爱折腾的我，有时间一定会做next的个性化-->
 
 ##### 后台管理: [hexo-hey](https://github.com/nihgwu/hexo-hey) & [**hexo-local-admin**](https://github.com/geekwen/hexo-local-admin)
@@ -54,25 +54,26 @@ date: 2016-11-18 17:08:24
 #### 完成功能
 - 添加统计 11/18
 
-- 添加一键上传至云存储的图片展示功能 11/19
+- 添加一键上传至云存储的图片展示功能 2016/11/19
 >感谢[weishu](http://weishu.me/)的[markdown-img-upload](https://github.com/tiann/markdown-img-upload)
 计划后续添加上传PDF的类似功能
-- 添加PDF展示 11/19
+- 添加PDF展示 2016/11/19
 >感谢[SRK.Lyu](http://stackbox.cn/)的[hexo-pdf](https://github.com/superalsrk/hexo-pdf/)
 >由于插件中调用的nagland.github.io/viewer/web/viewer.html 并不是官方实例，打算fork下来之后，有时间自己改一版
-- Travis CL 线上部署 12/12
+- Travis CL 线上部署 2016/12/12
 > 感谢[Travis CI](https://travis-ci.org/) 提供的开源服务
 > 感谢[任苹蜻的博客](http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/)
 > 感谢[Adol1111](https://github.com/Adol1111) 对gitingnor的讲解
-- 添加时光页面和侧边栏展示 12/17
-- 添加动画背景 12/29
-- 实现特殊markdown的解析,tag插件开发-《语录君栈》页面 02/01
+- 添加时光页面和侧边栏展示 2016/12/17
+- 添加动画背景 2016/12/29
+- 实现特殊markdown的解析,tag插件开发-《语录君栈》页面 (randpaging 插件开发完成) 2017/02/01
+- 实现可折叠列表样式优化，及 accordionlist插件开发完成 2017/02/05
 
 
 #### 后续计划
-- ~~添加列表折叠优化~~，妄想写个hexo插件 11/22 功能实现 后续研究怎么开发插件
+- ~~添加列表折叠优化，妄想写个hexo插件 ~~2016/11/22 功能实现 2017/02/05 插件开发完成
 - ~~添加访问统计 看看有多少人看过我的blog~~ next 主题已经集成CNZZ
-- ~~添加一个计时展示~~ 12/15 ~~功能实现,后续添加到侧边栏中~~ 12/17 完成
+- ~~添加一个计时展示~~ 2016/12/15 ~~功能实现,后续添加到侧边栏中~~ 2016/12/17
 - 车钥匙产品总架构总结内容添加
 - 添加静态HTML原型导入
 - 添加相册功能
