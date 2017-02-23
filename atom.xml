@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>R &amp; N</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-02-23T05:47:58.479Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ryan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>强制成长</title>
+    <link href="http://yoursite.com/2017/02/22/2017-02-22_forced-growth/"/>
+    <id>http://yoursite.com/2017/02/22/2017-02-22_forced-growth/</id>
+    <published>2017-02-22T23:09:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>行走在迷途的羔羊，<br>早已忘记清风草香，<br>天边不远的地方，<br>斡旋的秃鹰是否也在努力寻找方向？<br><a id="more"></a><br>乌云遮蔽的月光，<br>何时能将黑夜照亮，<br>夜深处传来的不详，<br>是猎豹还是豺狼？</p>
+<p>血液温热，利齿冰凉，<br>竭力嘶喊却发不出一丝声响，<br>看不见的地方，谁能填饱肚肠？</p>
+<p>死寂的空气里，滴滴时光流淌，<br>残破的躯壳，孤独的等待消亡。<br>现实扼住年少的轻狂，<br>不识之愁终败于悲伤。</p>
+<p>黑暗里寻找光芒，<br>绝望中孵化希望，<br>孱弱却渴望力量，<br>腐脂以汲取营养。</p>
+<p>枯骨之上，<br>草芽挣脱土壤，<br>清风中沐浴着清晨第一缕阳光。</p>
+<p>远处走来一只离群的羔羊……</p>
+<blockquote>
+<p>时隔一年再一次用文字表述心境<br>不是经历了什么特殊的事情<br>而是明白了自己已迷失在内心的围城<br>变得不像自己，不相信梦想，不相信感情<br>假借他人之口，总不如自省<br>努力生活，找回自己的曾经<br>愿痛苦早日得以安宁</p>
+</blockquote>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;行走在迷途的羔羊，&lt;br&gt;早已忘记清风草香，&lt;br&gt;天边不远的地方，&lt;br&gt;斡旋的秃鹰是否也在努力寻找方向？&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动画背景功能实现</title>
+    <link href="http://yoursite.com/2016/12/29/2016-12-29_animate-background/"/>
+    <id>http://yoursite.com/2016/12/29/2016-12-29_animate-background/</id>
+    <published>2016-12-29T21:00:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="创作背景"><a href="#创作背景" class="headerlink" title="创作背景"></a>创作背景</h4><blockquote>
+<p>爱 如影相随</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><blockquote>
+<p>源码取自CODEPEN，<a href="http://codepen.io/MarcoGuglielmelli/" target="_blank" rel="external">Sergei Varzin</a>的<a href="http://codepen.io/MarcoGuglielmelli/pen/lLCxy" target="_blank" rel="external">Animated Background</a></p>
+</blockquote>
+<p>链接是我调整后的JS代码：<a href="http://codepen.io/RyanNiu/pen/ENGWqL" target="_blank" rel="external">codepen</a></p>
+<h4 id="NexT集成"><a href="#NexT集成" class="headerlink" title="NexT集成"></a>NexT集成</h4><ul>
+<li>引用问题，<a href="https://greensock.com/" target="_blank" rel="external">greensock官网下载</a>,TweenLite.min.js <code>next/source/js/src/TweenLite.min.js</code></li>
+<li>新建.js文件 <code>next/source/js/src/animate-background.js</code></li>
+<li>新建.swig文件 <code>next/layout/_scripts/third-party/animate-background.swig</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;%</div><div class="line">set js_tweenlite = [</div><div class="line">'src/TweenLite.min.js'</div><div class="line">]</div><div class="line">%&#125;</div><div class="line">&#123;% for common in js_tweenlite %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for(theme.js) &#125;&#125;/&#123;&#123; common &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">&#123;% endfor %&#125;</div><div class="line"></div><div class="line">&#123;%</div><div class="line">set js_animatebg = [</div><div class="line">'src/animate-background.js'</div><div class="line">]</div><div class="line">%&#125;</div><div class="line">&#123;% for common in js_animatebg %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; url_for(theme.js) &#125;&#125;/&#123;&#123; common &#125;&#125;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>修改_layout.swig</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 在main内 添加canvas --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"background-canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 在文件结尾 添加animate-background.swig 的引用 --&gt;</span></div><div class="line">&#123;% include '_scripts/third-party/animate-background.swig' %&#125;</div></pre></td></tr></table></figure>
+<p>至此，功能完成，留此备忘</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;创作背景&quot;&gt;&lt;a href=&quot;#创作背景&quot; class=&quot;headerlink&quot; title=&quot;创作背景&quot;&gt;&lt;/a&gt;创作背景&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;爱 如影相随&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>时光页面，以及侧边栏展示功能实现</title>
+    <link href="http://yoursite.com/2016/12/17/2016-12-17_sidebar-timer/"/>
+    <id>http://yoursite.com/2016/12/17/2016-12-17_sidebar-timer/</id>
+    <published>2016-12-17T01:10:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="创作背景"><a href="#创作背景" class="headerlink" title="创作背景"></a>创作背景</h4><blockquote>
+<p>相恋5年，猛然回望<br>似乎未曾珍视有你的时光<br>你陪伴的每一秒，都是我人生的宝藏<br>该用时间记录过往<br>该用生活铸造梦想</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>经过了两个夜晚，实现了时光页面的初步创建和侧边栏展示，下面简单讲解一下实现方法</p>
+</blockquote>
+<h4 id="JS计时器的实现"><a href="#JS计时器的实现" class="headerlink" title="JS计时器的实现"></a>JS计时器的实现</h4><blockquote>
+<p>源码取自CODEPEN，<a href="http://codepen.io/varzin" target="_blank" rel="external">Sergei Varzin</a>的<a href="http://codepen.io/varzin/pen/rFfhH" target="_blank" rel="external">Date Countdown</a></p>
+</blockquote>
+<p>下面是我调整后的JS代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateTimer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="comment">// yyyy-MM-dd HH:mm:ss</span></div><div class="line">  past  = <span class="built_in">Date</span>.parse(<span class="string">"1991-03-30 00:00:00"</span>);</div><div class="line">  now     = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  diff    = now - past;</div><div class="line"></div><div class="line">  years  = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">30</span>*<span class="number">12</span>) );</div><div class="line">  months = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">30</span>) );</div><div class="line">  days   = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>) );</div><div class="line">  hours  = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>) );</div><div class="line">  mins   = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>) );</div><div class="line">  secs   = <span class="built_in">Math</span>.floor( diff / <span class="number">1000</span> );</div><div class="line"></div><div class="line">  y = years;</div><div class="line">  M = months - years  * <span class="number">12</span>;</div><div class="line">  d = days   - months * <span class="number">30</span>;</div><div class="line">  h = hours  - days   * <span class="number">24</span>;</div><div class="line">  m = mins   - hours  * <span class="number">60</span>;</div><div class="line">  s = secs   - mins   * <span class="number">60</span>;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"timer"</span>)</div><div class="line">    .innerHTML =</div><div class="line">      <span class="string">'&lt;div&gt;&lt;span&gt;since: 1991.03.30&lt;/span&gt;&lt;/div&gt;&lt;br&gt;'</span>+</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + y + <span class="string">'&lt;span&gt;years&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + M + <span class="string">'&lt;span&gt;months&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + d + <span class="string">'&lt;span&gt;days&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + h + <span class="string">'&lt;span&gt;hours&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + m + <span class="string">'&lt;span&gt;minutes&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">      <span class="string">'&lt;div&gt;'</span> + s + <span class="string">'&lt;span&gt;seconds&lt;/span&gt;&lt;/div&gt;'</span> ;</div><div class="line">&#125;</div><div class="line">setInterval(<span class="string">'updateTimer()'</span>, <span class="number">1000</span> );</div></pre></td></tr></table></figure>
+<p>功能实现后，在配置文件中，增加Menu既可，注意I18N的应用</p>
+<h4 id="侧边栏展示"><a href="#侧边栏展示" class="headerlink" title="侧边栏展示"></a>侧边栏展示</h4><ul>
+<li>新建.styl文件 <code>next/source/css/_common/components/sidebar/sidebar-timer.styl</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.sidebar_timer</span> &#123;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, <span class="string">"Open Sans"</span>, helvetica, arial, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">3em</span>;</div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">#48C8FF</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.sidebar_timer</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">min-width</span>: <span class="number">90px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.sidebar_timer</span> <span class="selector-tag">div</span> <span class="selector-tag">span</span> &#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#B1CDF1</span>;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">font-size</span>: .<span class="number">35em</span>;</div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">400</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar_since</span> &#123; </div><div class="line">  <span class="attribute">text-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">#48C8FF</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#B1CDF1</span>;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">font-size</span>: .<span class="number">35em</span>;</div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">400</span>;</div><div class="line">  <span class="attribute">padding-bottom</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>添加styl引用 <code>next/source/css/_common/components/sidebar/sidebar.styl</code></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"sidebar-timer"</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>新建js文件 <code>next/source/js/src/sidebar-timer.js</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateSidebarTimer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// yyyy-MM-dd HH:mm:ss</span></div><div class="line">    past  = <span class="built_in">Date</span>.parse(<span class="string">"2011-11-11 00:00:00"</span>);</div><div class="line">    now     = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">    diff    = now - past;</div><div class="line"></div><div class="line">    years  = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">30</span>*<span class="number">12</span>) );</div><div class="line">    months = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">30</span>) );</div><div class="line">    days   = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>) );</div><div class="line">    hours  = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>*<span class="number">60</span>) );</div><div class="line">    mins   = <span class="built_in">Math</span>.floor( diff / (<span class="number">1000</span>*<span class="number">60</span>) );</div><div class="line">    secs   = <span class="built_in">Math</span>.floor( diff / <span class="number">1000</span> );</div><div class="line"></div><div class="line">    y = years;</div><div class="line">    M = months - years  * <span class="number">12</span>;</div><div class="line">    d = days   - months * <span class="number">30</span>;</div><div class="line">    h = hours  - days   * <span class="number">24</span>;</div><div class="line">    m = mins   - hours  * <span class="number">60</span>;</div><div class="line">    s = secs   - mins   * <span class="number">60</span>;</div><div class="line">    <span class="built_in">document</span>.getElementsByClassName(<span class="string">"sidebar_timer"</span>)[<span class="number">0</span>]</div><div class="line">      .innerHTML =</div><div class="line">        <span class="string">'&lt;div class = "sidebar_since"&gt;&lt;span&gt;since&amp;nbsp;&amp;nbsp;:&amp;nbsp;&amp;nbsp;2011 . 11 . 11&lt;/span&gt;&lt;/div&gt;&lt;br&gt;'</span>+</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + y + <span class="string">'&lt;span&gt;years&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + M + <span class="string">'&lt;span&gt;months&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + d + <span class="string">'&lt;span&gt;days&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + h + <span class="string">'&lt;span&gt;hours&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + m + <span class="string">'&lt;span&gt;minutes&lt;/span&gt;&lt;/div&gt;'</span> +</div><div class="line">        <span class="string">'&lt;div&gt;'</span> + s + <span class="string">'&lt;span&gt;seconds&lt;/span&gt;&lt;/div&gt;'</span> ;</div><div class="line">&#125;</div><div class="line">setInterval(<span class="string">'updateSidebarTimer()'</span>, <span class="number">1000</span> );</div></pre></td></tr></table></figure>
+<ul>
+<li>添加js引用 <code>next/layout/_scripts/commons.swig</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set js_commons = [</div><div class="line">  <span class="string">'src/utils.js'</span>,</div><div class="line">  <span class="string">'src/motion.js'</span>,</div><div class="line">  <span class="string">'src/sidebar-timer.js'</span><span class="comment">//添加计时器js的引用</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<ul>
+<li>添加HTML节点 <code>next/layout/_macro/sidebar.swig</code></li>
+</ul>
+<blockquote>
+<p>在<code>site-state</code>和<code>feed-link</code>中间添加代码</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> = <span class="string">"sidebar_timer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>至此，完成了计时器功能的所有内容，留此备忘</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;创作背景&quot;&gt;&lt;a href=&quot;#创作背景&quot; class=&quot;headerlink&quot; title=&quot;创作背景&quot;&gt;&lt;/a&gt;创作背景&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;相恋5年，猛然回望&lt;br&gt;似乎未曾珍视有你的时光&lt;br&gt;你陪伴的每一秒，都是我人生的宝藏&lt;br&gt;该用时间记录过往&lt;br&gt;该用生活铸造梦想&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Github+Travis CI 实现blog自动部署</title>
+    <link href="http://yoursite.com/2016/12/10/2016-12-10_Hi-TravisCI/"/>
+    <id>http://yoursite.com/2016/12/10/2016-12-10_Hi-TravisCI/</id>
+    <published>2016-12-10T02:30:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>文章引自<a href="http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/" target="_blank" rel="external">任苹蜻的博客</a> </p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h3 id="新建新的分支"><a href="#新建新的分支" class="headerlink" title="新建新的分支"></a><strong>新建新的分支</strong></h3><p><code>master：</code>博客的静态文件，也就是hexo生成后的HTML文件，因为要使用Gitpage服务，所以他规定的网页文件必须是在master分支<br><!--more--></p>
+<p>建新的分支<code>：dev</code>：存放博客的源代码</p>
+<p>Git怎么推送本地分支到远程新分支上面去？</p>
+<p><code>git push --force origin local_branch:remote_branch</code></p>
+<p>这个操作，<code>local_branch</code>必须为你本地存在的分支，<code>remote_branch</code>为远程分支，如果<code>remote_branch</code>不存在则会自动创建分支。</p>
+<p>类似，<code>git push origin :remote_branch，local_branch</code>留空的话则是删除远程<code>remote_branch</code>分支。</p>
+<hr>
+<p><strong>这里是分支常用命令：</strong></p>
+<ul>
+<li><p>列出所有本地分支<br><code>$ git branch</code></p>
+</li>
+<li><p>列出所有远程分支<br><code>$ git branch -r</code></p>
+</li>
+<li><p>列出所有本地分支和远程分支<br><code>$ git branch -a</code></p>
+</li>
+<li><p>新建一个分支，但依然停留在当前分支<br><code>$ git branch [branch-name]</code></p>
+</li>
+<li><p>新建一个分支，并切换到该分支<br><code>$ git checkout -b [branch]</code></p>
+</li>
+<li><p>新建一个分支，指向指定commit<br><code>$ git branch [branch] [commit]</code></p>
+</li>
+<li><p>新建一个分支，与指定的远程分支建立追踪关系<br><code>$ git branch --track [branch] [remote-branch]</code></p>
+</li>
+<li><p>切换到指定分支，并更新工作区<br>`$ git checkout [branch-name]</p>
+</li>
+<li><p>切换到上一个分支<br><code>$ git checkout -</code></p>
+</li>
+<li><p>建立追踪关系，在现有分支与指定的远程分支之间<br><code>$ git branch --set-upstream [branch] [remote-branch]</code></p>
+</li>
+<li><p>合并指定分支到当前分支<br><code>$ git merge [branch]</code></p>
+</li>
+<li><p>选择一个commit，合并进当前分支<br>`$ git cherry-pick [commit]</p>
+</li>
+<li><p>删除分支<br><code>$ git branch -d [branch-name]</code></p>
+</li>
+<li><p>删除远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git push origin --delete [branch-name]</div><div class="line">$ git branch -dr [remote/branch]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="配置Travis"><a href="#配置Travis" class="headerlink" title="配置Travis"></a><strong>配置Travis</strong></h3><ul>
+<li>接入Travis CI<ul>
+<li>打开Travis CI网站，使用github账号登录。</li>
+<li>将鼠标放在右上角的用户名上，点击Account选项，会显示github的项目。</li>
+<li>找到博客项目，点击前面带有 X 符号的按钮，开启<code>travis</code>支持。<br><img src="http://upload-images.jianshu.io/upload_images/1152636-241d2155adb0eb9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="此处输入图片的描述"></li>
+</ul>
+</li>
+</ul>
+<p>然后点击设置按钮，在项目的设置中开启Build only if .travis.yml is present这一项.</p>
+<p><img src="http://seayxu.github.io/static/images/hexo-with-travisci-setting.jpg" alt="此处输入图片的描述"></p>
+<p>到这一步， 我们已经开启了要构建的仓库</p>
+<ul>
+<li><p>在Travis CI配置Github的Access Token</p>
+<ul>
+<li>在github上生成Access Token</li>
+</ul>
+</li>
+</ul>
+<p>首先我们来到github的设置界面，点击到<code>Personal access tokens</code>页面，点击右上角的<code>Generate new token</code>按钮会重新生成一个，点击后他会叫你输入密码，然后来到如下界面，给他去一个名字，下面是勾选一些权限</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1152636-a16de8c027bf5091.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="此处输入图片的描述"></p>
+<p> 生成完后，你需要拷贝下来,接下来要用到</p>
+<ul>
+<li>在Travis CI配置</li>
+</ul>
+<p>配置界面还是在项目的setting里面，如下图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1152636-9ba41b1ba943f624.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="此处输入图片的描述"></p>
+<p>还需要在源代码的仓库里创建一个<code>.travis.yml</code>配置文件，放到源代码的根目录，如下图</p>
+<p>其中内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js: stable</div><div class="line"></div><div class="line"># S: Build Lifecycle</div><div class="line">install:</div><div class="line">  - npm install</div><div class="line"></div><div class="line">#before_script:</div><div class="line"> # - npm install -g gulp</div><div class="line"></div><div class="line">script:</div><div class="line">  - hexo g</div><div class="line"></div><div class="line">after_script:</div><div class="line">  - cd ./public</div><div class="line">  - git init</div><div class="line">  - git config user.name "RyanNiu"</div><div class="line">  - git config user.email "RyanNiu@gmail.com"</div><div class="line">  - git add .</div><div class="line">  - git commit -m "Update docs"</div><div class="line">  - git push --force --quiet "https://$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;" master:master</div><div class="line"># E: Build LifeCycle</div><div class="line"></div><div class="line">branches:</div><div class="line">  only:</div><div class="line">    - blog-source</div><div class="line">env:</div><div class="line"> global:</div><div class="line">   - GH_REF: github.com/RyanNiu/RyanNiu.github.io.git</div></pre></td></tr></table></figure>
+<p>其中给你需要更换的又<code>git config</code>后面的配置信息<br><code>GH_REF</code>的值更改为你的仓库地址</p>
+<p>到这一步我们配置已经完成了</p>
+<hr>
+<h3 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a><strong>本地操作</strong></h3><ul>
+<li>把远程仓库源码下载下来新建新的分支dev  <code>git clone  -b dev https://github.com/poetries/poetries.github.io.git</code></li>
+<li>切换到项目根目录下</li>
+<li>开始写作</li>
+<li>关联远程仓库 <code>git remote add origin git@github.com:poetries/poetries.github.io.git</code></li>
+<li><p>提交本地修改，推送至github仓库。</p>
+</li>
+<li><p><code>$ git add</code> .</p>
+</li>
+<li><code>$ git commit -m &quot;test travis&quot;</code></li>
+<li><code>$ git push origin dev:dev</code></li>
+</ul>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;文章引自&lt;a href=&quot;http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/&quot;&gt;任苹蜻的博客&lt;/a&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>logo 设计展示</title>
+    <link href="http://yoursite.com/2016/11/20/2016-11-20_logo/"/>
+    <id>http://yoursite.com/2016/11/20/2016-11-20_logo/</id>
+    <published>2016-11-20T00:24:59.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="设计原因"><a href="#设计原因" class="headerlink" title="设计原因"></a>设计原因</h5><p>觉得设计并不难呀，而且该给自己一个符号。<br><a id="more"></a></p>
+<h5 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h5><p>本站logo设计历经了，1个多小时的深思熟虑，最终就是现在这个德行。<br>就是把我姓名的缩写NMR 通过变形 融合形成图案，<br>仍有待进一步改进，因为媳妇儿不是很满意，这里面没有她的元素在。</p>
+<h5 id="设计工具"><a href="#设计工具" class="headerlink" title="设计工具"></a>设计工具</h5><p>设计师/产品原型神器：<strong>sketch</strong></p>
+<h5 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h5><p><img src="http://ogwataaho.bkt.clouddn.com/2016/1479572055514.png" alt="设计原型"><br><img src="http://ogwataaho.bkt.clouddn.com/2016/1479572337947.png" alt="效果图"><br><img src="http://ogwataaho.bkt.clouddn.com/2016/1479572361529.png" alt="水印效果"></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;设计原因&quot;&gt;&lt;a href=&quot;#设计原因&quot; class=&quot;headerlink&quot; title=&quot;设计原因&quot;&gt;&lt;/a&gt;设计原因&lt;/h5&gt;&lt;p&gt;觉得设计并不难呀，而且该给自己一个符号。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+      <category term="设计" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>建站后记</title>
+    <link href="http://yoursite.com/2016/11/18/2016-11-18_CreateLog/"/>
+    <id>http://yoursite.com/2016/11/18/2016-11-18_CreateLog/</id>
+    <published>2016-11-18T17:08:24.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="为什么建站"><a href="#为什么建站" class="headerlink" title="为什么建站"></a>为什么建站</h4><p>需要个地方存放和展示自己的各种东西：<code>文字</code> <code>创意</code> <code>原型</code> <code>PRD</code> <code>照片</code> <code>回忆</code>和<code>梦想</code><br><a id="more"></a></p>
+<h4 id="网站架构"><a href="#网站架构" class="headerlink" title="网站架构"></a>网站架构</h4><h5 id="代码托管-github"><a href="#代码托管-github" class="headerlink" title="代码托管: github"></a>代码托管: <a href="https://github.com/RyanNiu/RyanNiu.github.io" target="_blank" rel="external">github</a></h5><blockquote>
+<p>借机学习了一下Markdown和git相关的东西</p>
+</blockquote>
+<h5 id="公网展示-github-page"><a href="#公网展示-github-page" class="headerlink" title="公网展示: github page"></a>公网展示: <a href="https://ryanniu.github.io/" target="_blank" rel="external">github page</a></h5><blockquote>
+<p>持续更新中，本文书写时处于癫狂的迷恋状态</p>
+</blockquote>
+<h5 id="建站框架-hexo"><a href="#建站框架-hexo" class="headerlink" title="建站框架: hexo"></a>建站框架: <a href="https://hexo.io/" target="_blank" rel="external">hexo</a></h5><blockquote>
+<p>在wordpress 和hexo 中，纠结了好久，最终由于hexo相对简单并且据说编译速度更快，继而投入了hexo的怀抱。</p>
+</blockquote>
+<h5 id="网站主题-next"><a href="#网站主题-next" class="headerlink" title="网站主题: next"></a>网站主题: <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">next</a></h5><blockquote>
+<p>建站前期，搜索了很多个人博客案例，被next一击即中，简洁大气很对我的胃口，也是使用hexo的原因之一。<br><!--爱折腾的我，有时间一定会做next的个性化--></p>
+</blockquote>
+<h5 id="后台管理-hexo-hey-amp-hexo-local-admin"><a href="#后台管理-hexo-hey-amp-hexo-local-admin" class="headerlink" title="后台管理: hexo-hey &amp; hexo-local-admin"></a>后台管理: <a href="https://github.com/nihgwu/hexo-hey" target="_blank" rel="external">hexo-hey</a> &amp; <a href="https://github.com/geekwen/hexo-local-admin" target="_blank" rel="external"><strong>hexo-local-admin</strong></a></h5><blockquote>
+<p>目前hexo没有什么特别好的 cms 和后台插件<br>我希望最终实现的是blog内容的 线上可视化编辑<br>所以 我想对这两个插件进行整合（能力范围内），并预想通过Travis CL 对其线上化</p>
+</blockquote>
+<h4 id="网站相关"><a href="#网站相关" class="headerlink" title="网站相关"></a>网站相关</h4><h5 id="域名服务"><a href="#域名服务" class="headerlink" title="域名服务"></a>域名服务</h5><ul>
+<li><a href="https://my.freenom.com/" target="_blank" rel="external"><strong>freenom</strong></a> <!-- ryan4work@163.com --></li>
+<li><a href="https://www.dnspod.cn" target="_blank" rel="external"><strong>dnspod</strong></a>  <!-- ryan4work@163.com --></li>
+</ul>
+<h5 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h5><ul>
+<li><a href="https://www.algolia.com/" target="_blank" rel="external"><strong>algolia</strong></a>  <!-- git 账号 --></li>
+</ul>
+<h5 id="评论服务"><a href="#评论服务" class="headerlink" title="评论服务"></a>评论服务</h5><ul>
+<li><a href="http://duoshuo.com/" target="_blank" rel="external"><strong>多说</strong></a> <!-- ryanniu --></li>
+<li><a href="https://disqus.com/" target="_blank" rel="external"><strong>disqus</strong></a> <!-- ryanniu (没搞定) --></li>
+</ul>
+<h5 id="统计服务"><a href="#统计服务" class="headerlink" title="统计服务"></a>统计服务</h5><ul>
+<li><a href="http://www.umeng.com/" target="_blank" rel="external"><strong>CNZZ</strong></a> <!-- ryan4work@163.com --></li>
+</ul>
+<h5 id="企业邮箱"><a href="#企业邮箱" class="headerlink" title="企业邮箱"></a>企业邮箱</h5><ul>
+<li><a href="http://ym.163.com/" target="_blank" rel="external"><strong>网易企业邮箱</strong></a> <!-- ryanniu@2bno1.cf --></li>
+</ul>
+<h5 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h5><ul>
+<li><a href="https://aws.amazon.com/" target="_blank" rel="external"><strong>amazon aws</strong></a> <!-- ryan niu  727758239340  (审核中) --></li>
+<li><a href="https://www.aliyun.com/" target="_blank" rel="external"><strong>阿里云</strong></a> <!-- ryan4work --></li>
+<li><a href="https://www.qiniu.com/" target="_blank" rel="external"><strong>七牛</strong></a> <!-- ryan4work@163.com --></li>
+</ul>
+<h4 id="完成功能"><a href="#完成功能" class="headerlink" title="完成功能"></a>完成功能</h4><ul>
+<li><p>添加统计 11/18</p>
+</li>
+<li><p>添加一键上传至云存储的图片展示功能 2016/11/19</p>
+<blockquote>
+<p>感谢<a href="http://weishu.me/" target="_blank" rel="external">weishu</a>的<a href="https://github.com/tiann/markdown-img-upload" target="_blank" rel="external">markdown-img-upload</a><br>计划后续添加上传PDF的类似功能</p>
+</blockquote>
+</li>
+<li>添加PDF展示 2016/11/19<blockquote>
+<p>感谢<a href="http://stackbox.cn/" target="_blank" rel="external">SRK.Lyu</a>的<a href="https://github.com/superalsrk/hexo-pdf/" target="_blank" rel="external">hexo-pdf</a><br>由于插件中调用的nagland.github.io/viewer/web/viewer.html 并不是官方实例，打算fork下来之后，有时间自己改一版</p>
+</blockquote>
+</li>
+<li>Travis CL 线上部署 2016/12/12<blockquote>
+<p>感谢<a href="https://travis-ci.org/" target="_blank" rel="external">Travis CI</a> 提供的开源服务<br>感谢<a href="http://i.woblog.cn/2016/05/04/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E4%BD%BF%E7%94%A8Travis%20CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BD%A0%E7%9A%84Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0Github%E4%B8%8A/" target="_blank" rel="external">任苹蜻的博客</a><br>感谢<a href="https://github.com/Adol1111" target="_blank" rel="external">Adol1111</a> 对gitingnor的讲解</p>
+</blockquote>
+</li>
+<li>添加时光页面和侧边栏展示 2016/12/17</li>
+<li>添加动画背景 2016/12/29</li>
+<li>实现特殊markdown的解析,tag插件开发-《语录君栈》页面 (randpaging 插件开发完成) 2017/02/01</li>
+<li>实现可折叠列表样式优化，及 accordionlist插件开发完成 2017/02/05</li>
+</ul>
+<h4 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h4><ul>
+<li>~~添加列表折叠优化，妄想写个hexo插件 ~~2016/11/22 功能实现 2017/02/05 插件开发完成</li>
+<li><del>添加访问统计 看看有多少人看过我的blog</del> next 主题已经集成CNZZ</li>
+<li><del>添加一个计时展示</del> 2016/12/15 <del>功能实现,后续添加到侧边栏中</del> 2016/12/17</li>
+<li>车钥匙产品总架构总结内容添加</li>
+<li>添加静态HTML原型导入</li>
+<li>添加相册功能</li>
+<li>外网域名设置</li>
+<li>可视化管理/编辑功能整合</li>
+<li>99无限PRD&amp;原型录入</li>
+<li>个人简历页面创建</li>
+<li>创建封面导航页 工作和生活分离</li>
+<li>多说样式更改</li>
+</ul>
+<!-- #### hexo换机备注 
+##### hexo博客创建
+
+- 创建仓库，(将”Initialize this repository with a README”选中，目的：克隆初始化的远程仓库到本地)（仓库名必须为:username.github.io）
+
+- 创建两个分支：master 与 hexo，设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件，master存放”hexo g”命令生成的静态网页）;
+
+- 配置公钥，ssh-keygen -t rsa -C “your_email@youremail.com”
+
+- 添加公钥，为远程github的username.github.io仓库添加.ssh文件夹下的id_rsa.pub文件的所有内容（验证公钥是否成功ssh -T git@github.com）
+
+- 设置username和email，git config –global user.name “your name” 和 git config –global user.email “your_email@youremail.com”
+
+- 克隆仓库到本地，任意位置通过Git bash执行git clone git@github.com:username/username.github.io.git拷贝仓库，在本地生成的仓库名为：username.github.io.git（进入本地仓库，使用git status 命令查看，当前分支应显示为hexo），如果想自定义本地仓库的名字，可以使用如下命令：git clone git@github.com:username/username.github.io.git hexo，本地仓库的名字就变为hexo(hexo可改成你想要的名字);
+
+- 任意位置新建一个空文件夹（文件夹名任意，最好为英文，我这里命名为example），然后在该文件夹下通过Git bash依次执行npm install hexo-cli -g、hexo init、npm install 和 npm install hexo-deployer-git –save;
+
+- 移动example文件夹里的所有内容到第6歩产生的username.github.io.git文件夹的根目录下
+
+- 配置username.github.io.git文件夹根目录下的_config.yml文件，deploy部分修改为如下所示：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: git@github.com:username/username.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
+<ul>
+<li><p>依次执行git add .（注意不要少了”.”）、git commit -a -m “…”(…替换为提交信息)、git push origin hexo提交网站相关的文件;</p>
+</li>
+<li><p>执行hexo clean、hexo g 、hexo d生成网站并部署到GitHub上.</p>
+</li>
+<li><p>通过以上配置，就可以在多PC上管理自己的博客了</p>
+</li>
+</ul>
+<h5 id="博客的日常管理"><a href="#博客的日常管理" class="headerlink" title="博客的日常管理"></a>博客的日常管理</h5><blockquote>
+<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
+</blockquote>
+<ul>
+<li><p>安装必备软件，git、node.js</p>
+</li>
+<li><p>配置公钥，ssh-keygen -t rsa -C “your_email@youremail.com”</p>
+</li>
+<li><p>添加公钥，为远程github的username.github.io仓库添加.ssh文件夹下的id_rsa.pub文件的所有内容（验证公钥是否成功ssh -T git@github.com）</p>
+</li>
+<li><p>设置username和email，git config –global user.name “your name” 和 git config –global user.email “your_email@youremail.com”</p>
+</li>
+<li><p>克隆仓库到本地，任意位置通过Git bash执行git clone git@github.com:username/username.github.io.git命令拷贝仓库，在本地生成的仓库名为：username.github.io.git（进入本地仓库，使用git status 命令查看，当前分支应显示为hexo），如果想自定义本地仓库的名字，可以使用如下命令：git clone git@github.com:username/username.github.io.git hexo，本地仓库的名字就变为hexo（hexo可改成你想要的名字）;</p>
+</li>
+<li><p>进入第5歩所生成的文件夹，通过Git bash依次执行npm install hexo-cli -g、npm install 和 npm install hexo-deployer-git–save（注意：不能执行hexo init这条指令）</p>
+</li>
+<li><p>写文章，现在就可以通过hexo new title（title是你文章的标题）命令来写文章了;</p>
+</li>
+<li><p>依次执行git add .（注意不要少了”.”）、git commit -a -m “…”、git push origin hexo提交网站相关的文件;</p>
+</li>
+<li><p>执行hexo clean、hexo g 、hexo d生成网站并部署到GitHub上.</p>
+</li>
+<li><p>配置过程中经常使用的命令</p>
+</li>
+<li><p>git status //列出当前目录所有还没有被git管理的文件和被git管理且被修改但还未提交 (git commit)的文件</p>
+</li>
+<li><p>git remote //查看远程服务器名</p>
+</li>
+<li><p>git branch //查看本地分支</p>
+</li>
+<li><p>git branch -r //查看远程分支</p>
+</li>
+<li><p>Git branch -a //查看所有分支（包括本地和远程）</p>
+</li>
+<li><p>git add . //追踪所有文件</p>
+</li>
+<li><p>git commit -a -m “…” //跳过使用暂存区域，自动把所有已经追踪过的文件暂存起来并提交</p>
+</li>
+<li><p>git push //上传</p>
+</li>
+<li><p>git clone //克隆远程仓库到本地</p>
+</li>
+<li><p>git remote add origin git@github.com:username/username.github.io.git //与远程仓库链接</p>
+</li>
+<li><p>git push -u origin master //-u 第一次提交让git记住本地仓库与远程仓库的连接,以后可 以不要<br>–&gt;</p>
+</li>
+</ul>
+--><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;为什么建站&quot;&gt;&lt;a href=&quot;#为什么建站&quot; class=&quot;headerlink&quot; title=&quot;为什么建站&quot;&gt;&lt;/a&gt;为什么建站&lt;/h4&gt;&lt;p&gt;需要个地方存放和展示自己的各种东西：&lt;code&gt;文字&lt;/code&gt; &lt;code&gt;创意&lt;/code&gt; &lt;code&gt;原型&lt;/code&gt; &lt;code&gt;PRD&lt;/code&gt; &lt;code&gt;照片&lt;/code&gt; &lt;code&gt;回忆&lt;/code&gt;和&lt;code&gt;梦想&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown语法</title>
+    <link href="http://yoursite.com/2016/11/18/2016-11-18_for-Nancy/"/>
+    <id>http://yoursite.com/2016/11/18/2016-11-18_for-Nancy/</id>
+    <published>2016-11-18T14:12:13.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本说明"><a href="#基本说明" class="headerlink" title="基本说明"></a>基本说明</h3><p> HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。<br><a id="more"></a><br>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。(如本文中的 常用语法表格 就是使用HTML标签实现的)</p>
+<pre><code>标题：可以在标题内容前输入特定数量的‘#’来实现对应级别的HTML样式的标题（HTML提供六级标题），# 一级标题；#### 四级标题。
+
+代码：要在Markdown中插入代码，你有两种选择。 一种是把代码用反引号‘`’包起。
+
+无序列表：使用星号‘*’、加号‘+’或是减号‘-’作为列表标记。
+有序列表：使用数字接着一个英文句点。
+
+换行：如果想强迫换行，可以在行尾插入至少两个空格。
+
+分隔线：你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。
+
+原样输出：如果需要打出‘#’，‘*’，‘&gt;’等在 Markdown中有特殊含义的字符，需要使用‘/’，进行转译。
+</code></pre><!-- 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
+    \   反斜线
+    `   反引号
+    *   星号
+    _   底线
+    {}  花括号
+    []  方括号
+    ()  括弧
+    #   井字号
+    +   加号
+    -   减号
+    .   英文句点
+    !   惊叹号 -->
+<h3 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h3><table><thead><tr><th>输出后的效果</th><th>Markdown</th></tr></thead><tbody><tr><td><strong>粗体</strong></td><td>**text**</td></tr><tr><td><em>斜体</em></td><td>*text*或_text_</td></tr><tr><td><del>删除</del></td><td>~~text~~</td></tr><tr><td><a href="index.html#">链接</a></td><td>[title](http://)</td></tr><tr><td><code>行内代码</code></td><td>`code`</td></tr><tr><td>图片</td><td>![alt](http://)</td></tr><tr><td>列表</td><td>*item</td></tr><tr><td>引用</td><td>&gt; quote</td></tr><tr><td>标题</td><td># Heading</td></tr><tr><td><a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#58;&#37038;&#31665;&#64;&#x61;&#x62;&#x63;&#46;&#99;&#111;&#109;">&#37038;&#31665;&#64;&#x61;&#x62;&#x63;&#46;&#99;&#111;&#109;</a></td><td><code>&lt;邮箱@abc.com&gt;</code></td></tr></tbody></table><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基本说明&quot;&gt;&lt;a href=&quot;#基本说明&quot; class=&quot;headerlink&quot; title=&quot;基本说明&quot;&gt;&lt;/a&gt;基本说明&lt;/h3&gt;&lt;p&gt; HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Better me" scheme="http://yoursite.com/tags/Better-me/"/>
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Love Fly</title>
+    <link href="http://yoursite.com/2016/11/12/2016-11-12_love-fly/"/>
+    <id>http://yoursite.com/2016/11/12/2016-11-12_love-fly/</id>
+    <published>2016-11-12T09:12:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="记一次爱的旅程"><a href="#记一次爱的旅程" class="headerlink" title="记一次爱的旅程"></a>记一次爱的旅程</h2><a id="more"></a>
+<h3 id="来自媳妇儿的吐槽"><a href="#来自媳妇儿的吐槽" class="headerlink" title="来自媳妇儿的吐槽"></a>来自媳妇儿的吐槽</h3><p>一大早起床赶飞机，来不及上厕所，还忘记了带昨晚买好的蛋糕，到了机场✈️喝了一大杯星冰乐，肚子更疼了，呜呜！到了飞机上吃了个早餐，喝了杯杨梅汁，肚子越发疼起来，疼起来了！</p>
+<h3 id="来自老公的总结"><a href="#来自老公的总结" class="headerlink" title="来自老公的总结"></a>来自老公的总结</h3><p>挺好</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;记一次爱的旅程&quot;&gt;&lt;a href=&quot;#记一次爱的旅程&quot; class=&quot;headerlink&quot; title=&quot;记一次爱的旅程&quot;&gt;&lt;/a&gt;记一次爱的旅程&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汤</title>
+    <link href="http://yoursite.com/2015/03/07/2015-03-07-life-is-soup/"/>
+    <id>http://yoursite.com/2015/03/07/2015-03-07-life-is-soup/</id>
+    <published>2015-03-07T02:05:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>午后的阳光，<br>透过落地窗，<br>洒在地板上，<br>半掩门外，谁在摇椅上半躺，<br>手边的茶壶，茉莉花未凉，<br>静好的岁月，连时光都带着花香。<br><a id="more"></a></p>
+<p>画外痴痴凝望，<br>但手机刺耳的响，<br>只好离开，继续一天的匆忙。</p>
+<p>努力的追逐人浪，<br>拼命的抓住理想，<br>没时间抬头，寻找幸免于雾霾的太阳，<br>急着奔跑，免得失去前进的方向，<br>就这样，直到这城市蔓延起灯光，<br>霓虹代替星辰，将夜空照亮，<br>疲惫的被人海流放，<br>走过画廊，却无心再去欣赏，<br>就这样，重复这城市应有的日常。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;午后的阳光，&lt;br&gt;透过落地窗，&lt;br&gt;洒在地板上，&lt;br&gt;半掩门外，谁在摇椅上半躺，&lt;br&gt;手边的茶壶，茉莉花未凉，&lt;br&gt;静好的岁月，连时光都带着花香。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不愿坦白</title>
+    <link href="http://yoursite.com/2014/07/17/2014-07-17-reluctant-to-confess/"/>
+    <id>http://yoursite.com/2014/07/17/2014-07-17-reluctant-to-confess/</id>
+    <published>2014-07-17T14:05:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多话你不会讲出来，<br>但心里明白，<br>你的付出与忍耐，<br>你的痛苦与倦怠，<br>积攒着的失落与悲哀，<br><a id="more"></a></p>
+<p>生活的轨迹一次次更改，<br>希望与失望纷至沓来，<br>细微的心思汇集成海，<br>一颗石子便能使其澎湃，<br>滴水也可成灾！</p>
+<p>放弃，也是释怀，<br>分不清黑白，<br>猜不出好坏，<br>不愿再做过多的旁白，<br>只好把它涂改。</p>
+<p>抉择，也是无奈，<br>看不透现在，<br>望不到未来，<br>不想说破心中的感慨，<br>只能将它掩埋。</p>
+<p>青春无法重来，<br>年轻不惧失败。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很多话你不会讲出来，&lt;br&gt;但心里明白，&lt;br&gt;你的付出与忍耐，&lt;br&gt;你的痛苦与倦怠，&lt;br&gt;积攒着的失落与悲哀，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>离去即想念</title>
+    <link href="http://yoursite.com/2014/05/29/2014-05-29_miss/"/>
+    <id>http://yoursite.com/2014/05/29/2014-05-29_miss/</id>
+    <published>2014-05-29T14:05:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>短短的七天，<br>像是渡过了一年，<br>太多的离合悲欢，<br>相见怀念，<br>复杂的情绪将心填满，<br>迟钝的人也会偶尔敏感，<br><a id="more"></a><br>以为经历社会的锤炼，<br>幼稚的我就会改变，<br>然而，目睹了有人撕破假面，<br>狰狞着非人的嘴脸，<br>让我恐惧与心寒，<br>不想为人性做过多争辩，<br>唯有为我爱的人们祈愿，<br>好人一生平安，<br>恶人遗臭万年。<br>理解了纯真，千金不换。</p>
+<p>见到了很多想念的容颜，<br>小聚之后更久的分散，<br>一直觉得毕业遥远，<br>其实不过转眼之间，<br>见过欣喜时如花笑颜，<br>见过情浓时泪痕满面，<br>还有太多想见未见，<br>总叹时间快如闪电，<br>想不出太多华丽的语言，<br>去形容此刻思绪的雍乱，<br>只盼，<br>未来的某天，<br>亲人挚友都在身边，<br>努力生活，直到梦想实现！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;短短的七天，&lt;br&gt;像是渡过了一年，&lt;br&gt;太多的离合悲欢，&lt;br&gt;相见怀念，&lt;br&gt;复杂的情绪将心填满，&lt;br&gt;迟钝的人也会偶尔敏感，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>未题</title>
+    <link href="http://yoursite.com/2013/12/15/2013-12-15_no-name/"/>
+    <id>http://yoursite.com/2013/12/15/2013-12-15_no-name/</id>
+    <published>2013-12-15T00:45:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>听着简单的歌，<br>看着春花凋落，<br>当清纯被现实染色，<br>物质变成了折磨，<br><a id="more"></a><br>改变不了这样的我，<br>失魂落魄，<br>骨感的生活，<br>疲惫的躯壳，<br>消瘦了我所有的执着，<br>于是，<br>让身体被生命挥霍，<br>让生命为物欲教唆，<br>血肉模糊的理想被霓虹湮没，<br>良心拼命撕扯，<br>欲望虐杀道德，<br>忘记最简单的快乐，<br>丢弃最底线的原则，<br>背离最基本的人格，<br>不知道这样的我，<br>到底还算什么！<br>是金钱的诱惑，<br>还是欲望的饥渴，<br>为未知拼搏，<br>失去的会否更多，<br>苦苦追寻的结果，<br>真的是想要的生活？<br>对岸绚烂的灯火，<br>依旧在无月的夜色中闪烁，<br>天际的星河，<br>虽美却无法触摸，<br>遮盖犯下的过错，<br>一句简单–生活所迫，<br>原谅了歌者，<br>沙哑的做作！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;听着简单的歌，&lt;br&gt;看着春花凋落，&lt;br&gt;当清纯被现实染色，&lt;br&gt;物质变成了折磨，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>牙痛</title>
+    <link href="http://yoursite.com/2013/09/15/2013-09-15_fuck-toothache/"/>
+    <id>http://yoursite.com/2013/09/15/2013-09-15_fuck-toothache/</id>
+    <published>2013-09-15T07:23:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天并没有不同，<br>日子还一样的普通，<br>没有那么多的思绪暗涌，<br>没有午夜的雷雨轰隆，<br>更没有麻木灵魂的酒精，<br>而我 为什么彻夜清醒，<br>疲惫的迎接黎明，<br><a id="more"></a></p>
+<p>因为我TM牙疼，</p>
+<p>它刺痛了我的神经，<br>让我无法安然入梦，<br>先人教导痛定思痛，<br>不能把牙疼不当成病，<br>蚁穴之堤后患无穷，<br>为了不让它半夜起哄，<br>我做出惊人的决定，<br>拔掉坏牙永享安宁！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天并没有不同，&lt;br&gt;日子还一样的普通，&lt;br&gt;没有那么多的思绪暗涌，&lt;br&gt;没有午夜的雷雨轰隆，&lt;br&gt;更没有麻木灵魂的酒精，&lt;br&gt;而我 为什么彻夜清醒，&lt;br&gt;疲惫的迎接黎明，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>度日如年</title>
+    <link href="http://yoursite.com/2013/06/29/2012-01-30_love-lover/"/>
+    <id>http://yoursite.com/2013/06/29/2012-01-30_love-lover/</id>
+    <published>2013-06-29T13:04:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然没有隔离沧海，<br>却各自一方默默等待。<br>风雨孤帆自摇摆，<br>觥筹自酌樽惨白。<br><a id="more"></a><br>现实的生活总有太多无奈，<br>浪漫的字眼其实我不明白，<br>温柔的话语会被残酷的现实击败，<br>海誓山盟不能将结局篡改，<br>在一起才是我们想要的未来！</p>
+<p>可是现在，<br>孤单褪尽你却不在，<br>喧嚣的街将心掩埋，<br>空洞的眼被晶莹的泪水覆盖。<br>终于知道，什么叫距离，什么叫思念，什么叫等待，什么叫无奈，什么叫离不开。<br>思念只能化作文字，变成淌在心里的篇章纯白，<br>不能亲口述说爱的依赖，<br>不懂坚强，不知悔改，<br>执迷不悟的挥洒对你的爱！</p>
+<p>不想虚伪的旁白，<br>切身体会这爱的悲哀，<br>只想自己主宰，<br>痛也痛的痛快！<br>人生没有彩排，爱就爱的精彩！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然没有隔离沧海，&lt;br&gt;却各自一方默默等待。&lt;br&gt;风雨孤帆自摇摆，&lt;br&gt;觥筹自酌樽惨白。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>总有那么一段时间</title>
+    <link href="http://yoursite.com/2013/05/29/2013-05-29_always/"/>
+    <id>http://yoursite.com/2013/05/29/2013-05-29_always/</id>
+    <published>2013-05-29T06:27:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>那段时间叫大三，<br>寝室里面看不到天，<br>过去的朋友好久不见，<br>新交的朋友还没出现，<br>室友一个个往外搬，<br>忽然发现回到从前，<br>再次独自游荡在房间，<br>依然在繁杂里孤单，<br>可现在怎么又不习惯。<br><a id="more"></a><br>好多的人我都不喜欢，<br>却偏偏不舍再不见，<br>不知有什么可留恋。 </p>
+<p>不知何时变得不在反叛，<br>不知何故变得害怕明天。<br>开始逃避自己，逃避改变。<br>一丝风浪就让游轮搁浅。<br>拼命的挣扎着不去思念，<br>抹不去的是青春的笑脸<br>和厌恶的校园。<br>忽然发现，<br>校服也那么鲜艳，<br>忽然感觉，<br>自己无聊的可怜。<br>生活的精彩被平庸冲淡，<br>忏悔着犯错，<br>一次次重演，<br>追逐着失去，<br>无限循环。<br>撕一块年华的碎片，<br>填补在迷途不知的荒原。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;那段时间叫大三，&lt;br&gt;寝室里面看不到天，&lt;br&gt;过去的朋友好久不见，&lt;br&gt;新交的朋友还没出现，&lt;br&gt;室友一个个往外搬，&lt;br&gt;忽然发现回到从前，&lt;br&gt;再次独自游荡在房间，&lt;br&gt;依然在繁杂里孤单，&lt;br&gt;可现在怎么又不习惯。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>来吧！宝贝儿！</title>
+    <link href="http://yoursite.com/2012/10/23/2012-10-23_come-on-ass/"/>
+    <id>http://yoursite.com/2012/10/23/2012-10-23_come-on-ass/</id>
+    <published>2012-10-23T00:21:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>做人就需要拥有远见，<br>做人要学会敢想敢干，<br>即使一路上磕磕绊绊，<br>也要踏平所有的阻拦，<br><a id="more"></a><br>那些小人恶毒的谗言，<br>只是大家谈笑的本钱，<br>那些行径可耻的嘴脸，<br>就像禽兽和人类合产，<br>给别人伤害，<br>来满足杂种的存在感，<br>让别人难过，<br>实现身为贱人的夙愿。</p>
+<p>不为遇见垃圾而感叹，<br>不为受到阴刀而伤感，<br>人生苦短，<br>畜生终究不能当人看，<br>怎会让混蛋污染双眼，<br>对这种人，<br>我们应该真诚祝愿，<br>我们应该热烈期盼，<br>祝愿它出门遇难，<br>期盼它花钱受骗，<br>祝愿它病魔相伴，<br>期盼它早日升天……</p>
+<p>不想再为废物浪费我的语言，<br>即使我的话语并不值钱。<br>最后赠这些兽人一句箴言，<br>估测倭寇是你们的祖先。</p>
+<p>舍弃这些无用的抱怨，<br>无视那些不公的改变，<br>无论面对怎样的明天，<br>都会微笑着接受挑战，<br>come on！！ 混蛋！！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做人就需要拥有远见，&lt;br&gt;做人要学会敢想敢干，&lt;br&gt;即使一路上磕磕绊绊，&lt;br&gt;也要踏平所有的阻拦，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拿什么证明我不爱你</title>
+    <link href="http://yoursite.com/2012/07/18/2012-07-18_have-to-love/"/>
+    <id>http://yoursite.com/2012/07/18/2012-07-18_have-to-love/</id>
+    <published>2012-07-18T01:18:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>多少难眠的夜里，<br>试着解释的问题，<br>那些轻狂的年纪，<br>说不出爱的勇气，<br>为什么这么在乎你，<br><a id="more"></a><br>翻阅日记，<br>追寻与你的点滴，<br>想要那么一种证据，<br>证明我不爱你，<br>推翻这错误命题，<br>因为食指印着爱你的印记，<br>因为一颗爱你的心嵌入身体，<br>因为灵魂被爱洗礼，<br>因为仍旧珍惜，</p>
+<p>在乎着这样的你——<br>收不住公主的脾气，<br>重复着可笑的话题，<br>透露出天真的话语<br>和永远不理想的成绩，<br>阴雨里等待着我的焦急，<br>蓝天下青春的美丽。</p>
+<p>这样的可爱的你，<br>怎能让我放弃，<br>让我用什么证明，<br>证明我不爱你，<br>让我用什么否定，<br>否定你是我的唯一，<br>用这痴狂的逻辑，<br>寻找爱的动力，<br>生命仍未停息，<br>所以，爱可继续！！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;多少难眠的夜里，&lt;br&gt;试着解释的问题，&lt;br&gt;那些轻狂的年纪，&lt;br&gt;说不出爱的勇气，&lt;br&gt;为什么这么在乎你，&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>相信，是爱的血脉</title>
+    <link href="http://yoursite.com/2011/12/04/2011-12-04_trust-is-life-for-love/"/>
+    <id>http://yoursite.com/2011/12/04/2011-12-04_trust-is-life-for-love/</id>
+    <published>2011-12-04T23:59:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>爱，<br>身陷苦海。<br><a id="more"></a><br>不愿置身事外，<br>需要的是关怀，<br>无所谓过去未来，<br>都不屑去猜，<br>不是能看的开，<br>而是，不愿见那些俗不可奈，<br>让她的心有丝丝阴霾。<br>信任，是爱的血脉，<br>猜忌，让爱情倦怠，<br>相信这些释怀，<br>可以让她明白，<br>没有什么会是阻碍，<br>所以，<br>不会让爱，<br>深陷苦海，<br>要给她的只有愉快，<br>这简单的字，<br>写给我的女孩！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;爱，&lt;br&gt;身陷苦海。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有你不孤单</title>
+    <link href="http://yoursite.com/2011/11/16/2011-11-16_with-u-love-u/"/>
+    <id>http://yoursite.com/2011/11/16/2011-11-16_with-u-love-u/</id>
+    <published>2011-11-16T00:10:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>那些幸福的不安，来的太突然，<br>来不及思考，行动都变的迟缓……<br>不会再为那些无谓的事物慌乱，<br>不想再把那些荒唐的痛重演！<br><a id="more"></a><br>没有什么海誓山盟的誓言，<br>不懂什么花前月下的浪漫。<br>或许，我的关心太过平淡，<br>我的人生太过平凡，<br>但，即使我是即将熄灭的灯盏，<br>也要照亮，我们共同的明天，<br>即使尘世的美都不必留恋，<br>我也会淡淡的品着对你的思念，<br>如果，我们的未来，渐行渐远，<br>一生厮守，便是今世最奢侈的企盼，<br>最珍贵的，是属于我的你的笑脸。<br>多期望，那一天，<br>行将就木，你仍在身边！<br>那送你的诗，会读几遍？<br>这寄你的情，是否永远新鲜？<br>无论未来如何变幻，<br>握着你手，便是永远！</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;那些幸福的不安，来的太突然，&lt;br&gt;来不及思考，行动都变的迟缓……&lt;br&gt;不会再为那些无谓的事物慌乱，&lt;br&gt;不想再把那些荒唐的痛重演！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+      <category term="love note" scheme="http://yoursite.com/tags/love-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>没有雪的雪</title>
+    <link href="http://yoursite.com/2011/11/04/2011-11-04_without-snow/"/>
+    <id>http://yoursite.com/2011/11/04/2011-11-04_without-snow/</id>
+    <published>2011-11-04T05:59:00.000Z</published>
+    <updated>2017-02-23T05:47:58.479Z</updated>
+    
+    <content type="html"><![CDATA[<p>舍不得你的一切<br>舍不得你消失在我的世界<br>舍不得的体贴<br>舍不得的是你的一切<br><a id="more"></a><br>今天这不是诀别的告别<br>却将我心撕裂<br>在一起时不知珍惜 失去才哭的哽咽<br>安静的角落 不易察觉<br>清澈的泪随风摇曳<br>痛彻的心不停滴血<br>混合这泪水 将记忆湮灭<br>不想说的太伤 免得让心疼的越界<br>免得让痛太过狂野<br>只将这一切情感省略<br>在下个没有你的季节<br>带着你给的微笑 看下一场雪</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;舍不得你的一切&lt;br&gt;舍不得你消失在我的世界&lt;br&gt;舍不得的体贴&lt;br&gt;舍不得的是你的一切&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="拾光" scheme="http://yoursite.com/tags/%E6%8B%BE%E5%85%89/"/>
+    
+  </entry>
+  
+</feed>
